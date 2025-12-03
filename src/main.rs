@@ -12,6 +12,7 @@ mod utils;
 
 mod day1;
 mod day2;
+mod day3;
 
 #[derive(Debug, Parser)]
 struct Options {
@@ -65,6 +66,7 @@ fn main() -> Result<()> {
     let solution = match opts.day {
         1 => day1::main,
         2 => day2::main,
+        3 => day3::main,
         day @ 1..=25 => return Err(anyhow!("No implementation for day {} yet", day)),
         day => return Err(anyhow!("Day {} is not a valid day for advent of code", day)),
     };
