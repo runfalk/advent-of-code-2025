@@ -1,9 +1,14 @@
 //! # Day 2: Gift Shop
+//! Input is a single line of comma-separated inclusive ID ranges `start-end` with no leading
+//! zeroes.
 //!
-//! Parse comma-separated ID ranges of the form `start-end` and identify invalid IDs. An ID is
-//! invalid when its digits are a non-empty sequence repeated at least twice without leading
-//! zeroes. Part A restricts this to exactly two repeats; Part B allows any repeat count of two or
-//! more. Sum all invalid IDs contained in the provided ranges.
+//! ## Part A
+//! Find IDs within the ranges whose digits are a non-empty sequence repeated exactly twice; sum
+//! all invalid IDs.
+//!
+//! ## Part B
+//! IDs are invalid if their digits are any sequence repeated two or more times; sum all invalid IDs
+//! in the ranges.
 use anyhow::{Context, Result, bail};
 
 #[derive(Debug, Clone, Copy)]

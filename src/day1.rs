@@ -1,9 +1,13 @@
 //! # Day 1: Secret Entrance
+//! Input is a list of dial rotations on a 0-99 circle starting at 50, each as `L|R<clicks>` on its
+//! own line.
 //!
-//! Track how a dial on a 0-99 circle moves from a starting position of 50. Each instruction
-//! rotates left (`L`) or right (`R`) by a number of clicks. Part A counts how many rotations end
-//! exactly at 0. Part B counts every intermediate click that lands on 0, so long rotations can
-//! register multiple hits.
+//! ## Part A
+//! Apply rotations and count how many end with the dial at 0.
+//!
+//! ## Part B
+//! Count every click that passes through 0 during rotations, including intermediate clicks on long
+//! moves.
 use anyhow::{Context, Result, bail};
 
 const DIAL_SIZE: usize = 100;
@@ -91,9 +95,7 @@ fn part_b(rotations: &[Instruction]) -> usize {
 
 pub fn main(input: &str) -> Result<(usize, Option<usize>)> {
     let rotations = parse_input(input)?;
-    let a = part_a(&rotations);
-    let b = part_b(&rotations);
-    Ok((a, Some(b)))
+    Ok((part_a(&rotations), Some(part_b(&rotations))))
 }
 
 #[cfg(test)]

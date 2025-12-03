@@ -1,12 +1,18 @@
 //! # Day 3: Lobby
+//! Input lists banks of batteries as digit strings (1-9) where order is fixed and each line is one
+//! bank.
 //!
-//! Pick exactly two batteries from each line of digits (in order) to form the largest possible
-//! two-digit joltage, summing the per-bank maxima. Part B instead picks twelve batteries per bank
-//! to maximize the resulting 12-digit joltage.
+//! ## Part A
+//! For each bank, select exactly two batteries (digits) in order to form the largest possible
+//! two-digit number; sum the best numbers from all banks.
+//!
+//! ## Part B
+//! For each bank, select exactly twelve batteries in order to form the largest possible
+//! twelve-digit number; sum these numbers across all banks.
 use anyhow::{Result, bail};
 
-const PICK_A: usize = 2;
-const PICK_B: usize = 12;
+const NUM_PICKS_A: usize = 2;
+const NUM_PICKS_B: usize = 12;
 
 /// Parse banks of battery ratings (digits 1-9).
 fn parse_input(input: &str) -> Result<Vec<Vec<usize>>> {
@@ -60,18 +66,16 @@ fn max_bank_joltage(batteries: &[usize], num_picks: usize) -> Result<usize> {
 
 /// Sum the highest two-digit values obtainable from each bank.
 fn part_a(banks: &[Vec<usize>]) -> Result<usize> {
-    banks.iter().try_fold(
-        0usize,
-        |acc, bank| Ok(acc + max_bank_joltage(bank, PICK_A)?),
-    )
+    banks.iter().try_fold(0usize, |acc, bank| {
+        Ok(acc + max_bank_joltage(bank, NUM_PICKS_A)?)
+    })
 }
 
 /// Sum the highest 12-digit values obtainable from each bank.
 fn part_b(banks: &[Vec<usize>]) -> Result<usize> {
-    banks.iter().try_fold(
-        0usize,
-        |acc, bank| Ok(acc + max_bank_joltage(bank, PICK_B)?),
-    )
+    banks.iter().try_fold(0usize, |acc, bank| {
+        Ok(acc + max_bank_joltage(bank, NUM_PICKS_B)?)
+    })
 }
 
 pub fn main(input: &str) -> Result<(usize, Option<usize>)> {

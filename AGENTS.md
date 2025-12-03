@@ -8,8 +8,9 @@ B. The problem for part B isn't exposed until part A is solved.
 # Coding conventions
 * Add a doc comment for each file that explains the problem in a concise way
   for each part and omit the story telling details of the problem statement. The
-  description should be verbose enough that  the problem can be solved without
-  access to the problem statement.
+  description should be verbose enough that the problem can be solved without
+  access to the problem statement. The doc comment should wrap at 100 characters
+  per line.
 * Each day exposes `pub fn main(input: &str) -> anyhow::Result<(A, Option<B>)>`.
   `A` and `B` must implement `std::fmt::Display` and should generally be
   integers.
@@ -31,10 +32,9 @@ B. The problem for part B isn't exposed until part A is solved.
   take the parsed input as an argument.
 * When logic is re-used in multiple places within the same day, create a helper
   function.
-* Parsing can happen either in `main` or in a separate function to make handling
-  easier for tests.
+* Input parsing should be its own function.
 * It is OK to combine both `part_a` and `part_b` into a single function in cases
-  where the same function can be used to solve the same problem cleanly.
+  where the same function can be used to solve the problem.
 * Tests don't need doc comments.
 * Use `src/day1.rs` as a reference for how the code should be structured.
 * Structs should at least derive `Debug` such that it can easily be printed.
