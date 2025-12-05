@@ -24,13 +24,13 @@ struct Cell {
 impl Cell {
     /// Return all eight neighboring cells (including diagonals).
     fn neighbors(self) -> impl Iterator<Item = Cell> {
-        (-1..=1).flat_map(move |dx| {
-            (-1..=1).filter_map(move |dy| {
-                (dx != 0 || dy != 0).then(|| Cell {
+        (-1..=1).flat_map(move |dy| {
+            (-1..=1)
+                .filter(move |&dx| dx != 0 || dy != 0)
+                .map(move |dx| Cell {
                     x: self.x + dx,
                     y: self.y + dy,
                 })
-            })
         })
     }
 }

@@ -1,11 +1,13 @@
 # Purpose & layout
 Advent of Code 2024 solutions. Entry point `src/main.rs` dispatches to
-`src/dayN.rs` modules; inputs live in `data/dayN.txt`. Run a solution with
-`cargo run -- --day <N> [--input <path>]`. Each day is split into part A and
-B. The problem for part B isn't exposed until part A is solved.
+`src/dayN.rs` modules; inputs live in `data/dayN.txt`. Run a solution against
+the real input with `cargo run -- <N>`. Each day is split into part A and B. The
+problem for part B isn't exposed until part A is solved.
 
 
 # Coding conventions
+* The `Cargo.toml` has a `rust-version` key that represents the minimum
+  supported Rust version. No older compiler version needs to be supported.
 * Add a doc comment for each file that explains the problem in a concise way
   for each part and omit the story telling details of the problem statement. The
   description should be verbose enough that the problem can be solved without
@@ -19,10 +21,9 @@ B. The problem for part B isn't exposed until part A is solved.
 * Solutions for new days are registered in `src/main.rs` such that they
   can be called using the CLI.
 * Parsing should be strict and things like additional spaces are invalid. There
-  is no need to support malformed input. The first line may however be blank, so
-  it's recommended to use inside the parse function `.trim()` once on the whole
-  input string such that unit tests can be nicely formatted using the
-  `dedent!()` macro.
+  is no need to support malformed input. `.trim()` should always be called on
+  the input, as the `deindent!()` macro is used in unit tests. There is no need
+  for any additional trimming.
 * Whenever the `dedent!()` macro is used for test data, the input should be
   indented one more level than the let statement it's assigned to. Raw multi-line
   strings should be used and `r#"` and `"` should be on their own lines.
@@ -38,7 +39,8 @@ B. The problem for part B isn't exposed until part A is solved.
 * Tests don't need doc comments.
 * Use `src/day1.rs` as a reference for how the code should be structured.
 * Structs should at least derive `Debug` such that it can easily be printed.
-* Integer types should be `usize` or `isize` to avoid casting.
+* Integer types should be `usize` or `isize` to avoid casting. The code will
+  always run on a 64-bit system.
 * Only declare types for `let` statements when the correct type can't
   automatically be inferred.
 * Use named constants instead of "magic" numbers.
@@ -64,6 +66,8 @@ asserted.
 
 
 # Linting & formatting
-`cargo fmt` for formatting; `cargo clippy -- -D warnings` for linting
-(matches `pre-commit`). Keep the tree ASCII-only unless existing files already
-use other characters.
+After changes have been performed:
+
+* Run `cargo fmt` for automatic formatting
+* Run `cargo clippy -- -D warnings` for linting and address any warning or
+  errors.

@@ -5,6 +5,7 @@ readme = "README.md"
 version = "0.1.0"
 authors = ["Andreas Runfalk <andreas@runfalk.se>"]
 edition = "2024"
+rust-version = "1.91"
 publish = false
 
 # Always optimize builds (we care about speed, not safety)
