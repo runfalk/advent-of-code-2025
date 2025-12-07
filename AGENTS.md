@@ -55,6 +55,9 @@ problem for part B isn't exposed until part A is solved.
 * `src/utils.rs` only holds the `test_real_input!` macro. Don't add other
   shared helpers there. Solutions should stay self contained in their
   `src/dayN.rs` modules.
+* If applicable, use `debug_assert!()` to sanity check the answer in each part
+  before returning. This should only be done if the bounds are already known
+  without extra computation.
 
 
 # Testing
