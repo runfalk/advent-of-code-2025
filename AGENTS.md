@@ -58,6 +58,7 @@ problem for part B isn't exposed until part A is solved.
 * If applicable, use `debug_assert!()` to sanity check the answer in each part
   before returning. This should only be done if the bounds are already known
   without extra computation.
+* Functions starting with `is_` or `has_` should always return `bool`.
 
 
 # Testing
