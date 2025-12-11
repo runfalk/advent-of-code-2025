@@ -2,7 +2,11 @@
 Advent of Code 2024 solutions. Entry point `src/main.rs` dispatches to
 `src/dayN.rs` modules; inputs live in `data/dayN.txt`. Run a solution against
 the real input with `cargo run -- <N>`. Each day is split into part A and B. The
-problem for part B isn't exposed until part A is solved.
+problem for part B isn't exposed until part A is solved. If part B has not been
+provided yet, don't attempt to guess and solve it in advance. Just return `None`
+as a placeholder value from the day's `main` function. Solutions running through
+`cargo run` are automatically memory limited to ensure that an incorrect
+implementation exhausts all system resources.
 
 
 # Coding conventions

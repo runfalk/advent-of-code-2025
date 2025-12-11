@@ -1,0 +1,11 @@
+[target.x86_64-unknown-linux-gnu]
+runner = [
+    "prlimit",
+    # Cap total address space (virtual memory)
+    "--as=4294967296",
+    # Cap resident set size (physical memory pages currently in use)
+    "--rss=4294967296",
+    # Cap data/heap segment (dynamically allocated memory)
+    "--data=4294967296",
+    "--",
+]
